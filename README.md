@@ -1,4 +1,4 @@
-# **Peter AI**
+# **Peter AI - Cloud Computing**
 
 ## 1. Install Express JS
 
@@ -11,3 +11,4 @@ npm install express
 ```bash
 node app.js
 ```
+
