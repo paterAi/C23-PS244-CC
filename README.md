@@ -11,7 +11,3 @@ npm install express
 ```bash
 node app.js
 ```
-
-```bash
-node app.js
-```
