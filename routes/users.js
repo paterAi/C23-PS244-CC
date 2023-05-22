@@ -1,9 +1,21 @@
-var express = require('express');
-var router = express.Router();
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+const User = sequelize.define('User', {
+  email: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
 });
 
-module.exports = router;
+module.exports = User;
