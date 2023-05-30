@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const db = require('../config');
 
-router.post('/signup', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     const { email, password } = req.body;
 
