@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../config');
-const { verifyToken } = require('../middleware/authMiddleware');
+const { verifyToken } = require('../middleware/verifyToken');
 
 // Endpoint untuk mengupdate profil pengguna
 router.put('/', verifyToken, async (req, res) => {

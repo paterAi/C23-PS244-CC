@@ -1,0 +1,30 @@
+### SIGNUP
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "username": "Salmanganteng",
+    "email": "salman@gmail.com",
+    "password": "Password123",
+    "confirmPass": "Password123"
+}
+
+
+### LOGIN
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email":"salman@gmail.com",
+    "password": "Password123"
+}
+
+### GET_PROFILE
+POST http://localhost:3000/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbmdhbnRlbmciLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODU0Njk2NjQsImV4cCI6MTY4NTQ2OTY5NH0.YOJ4EqDsqsCDxoorwWOEMw5yUB5EAY0JXnbpYsLu61g
+
+{
+    "email":"salman@gmail.com",
+    "password": "Password123"
+}

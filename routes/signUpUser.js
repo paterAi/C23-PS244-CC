@@ -5,7 +5,7 @@ const db = require('../config');
 
 router.post('/', async (req, res) => {
   try {
-    const { email, password, confirmPass } = req.body;
+    const { username, email, password, confirmPass } = req.body;
 
     // Tambahkan logika validasi email dan password sesuai kebutuhan
     if (password != confirmPass) return res.status(400).json({ msg: "Password tidak sama"});
@@ -18,6 +18,7 @@ router.post('/', async (req, res) => {
       res.status(409).json({ error: 'Email sudah digunakan' });
     } else {
       await usersRef.add({
+        username: username,
         email: email,
         password: hashPassword
         // Tambahkan informasi pengguna lainnya jika diperlukan
