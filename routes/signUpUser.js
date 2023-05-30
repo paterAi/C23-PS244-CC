@@ -1,27 +1,27 @@
 const express = require('express');
+const bcrypt = require('bcrypt');
 const router = express.Router();
 const db = require('../config');
 
 router.post('/', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, confirmPass } = req.body;
 
     // Tambahkan logika validasi email dan password sesuai kebutuhan
-
+    if (password != confirmPass) return res.status(400).json({ msg: "Password tidak sama"});
+    const salt = await bcrypt.genSalt();
+    const hashPassword = await bcrypt.hash(password, salt);
+    
     const usersRef = db.collection('users');
     const querySnapshot = await usersRef.where('email', '==', email).get();
-
     if (!querySnapshot.empty) {
       res.status(409).json({ error: 'Email sudah digunakan' });
     } else {
-      const newUser = {
-        email,
-        password,
+      await usersRef.add({
+        email: email,
+        password: hashPassword
         // Tambahkan informasi pengguna lainnya jika diperlukan
-      };
-
-      const user = await usersRef.add(newUser);
-
+      });
       res.status(200).json({ message: 'Akun berhasil dibuat' });
     }
   } catch (error) {
