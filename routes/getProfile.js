@@ -34,19 +34,3 @@ router.get('/', verifyToken, async (req, res) => {
 });
 
 module.exports = router;
-
-    /*
-    const userRef = db.collection('users').doc();
-    userRef.get().then((doc) => {
-        if (!doc.exists) {
-            return res.status(401).json({ error: 'Data Tidak Ada' });
-        }
-
-    const userDocSnapshot = await getDoc(userDocRef);
-
-    if (!userDocSnapshot.exists()) {
-      res.status(404).json({ error: 'Profile tidak ditemukan' });
-    }
-    
-    const userData = userDocSnapshot.data();
-    */
