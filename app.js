@@ -10,6 +10,7 @@ const loginUserRoutes = require('./routes/loginUser');
 const signUpUserRoutes = require('./routes/signUpUser');
 const { verifyToken } = require('./middleware/verifyToken');
 const getProfileRoutes = require('./routes/getProfile');
+const updateProfileRoutes = require('./routes/updateProfile');
 
 var app = express();
 
@@ -28,7 +29,7 @@ app.use('/users', usersRouter);
 app.use('/login', loginUserRoutes);
 app.use('/signup', signUpUserRoutes);
 app.use('/profile', verifyToken, getProfileRoutes);
-
+app.use('/profile', verifyToken, getProfileRoutes, updateProfileRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
