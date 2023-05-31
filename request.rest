@@ -20,11 +20,19 @@ Content-Type: application/json
 }
 
 ### GET_PROFILE
-POST http://localhost:3000/profile
+GET http://localhost:3000/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbmdhbnRlbmciLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODU0Njk2NjQsImV4cCI6MTY4NTQ2OTY5NH0.YOJ4EqDsqsCDxoorwWOEMw5yUB5EAY0JXnbpYsLu61g
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbmdhbnRlbmciLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODU1MjY3NDAsImV4cCI6MTY4NTYxMzE0MH0.lO1PZTxwAnQ69mCKbqHFojHwKrZIzk3KoDQGcklC1Sw
 
 {
-    "email":"salman@gmail.com",
-    "password": "Password123"
+    "email":"salman@gmail.com"
+}
+
+### UPDATE_PROFILE
+PUT http://localhost:3000/profile/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbmdhbnRlbmciLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODU1MjY3NDAsImV4cCI6MTY4NTYxMzE0MH0.lO1PZTxwAnQ69mCKbqHFojHwKrZIzk3KoDQGcklC1Sw
+
+{
+    "email":"salman@gmail.com"
 }

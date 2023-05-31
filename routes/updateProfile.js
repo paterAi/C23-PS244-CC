@@ -4,7 +4,7 @@ const db = require('../config');
 const { verifyToken } = require('../middleware/verifyToken');
 
 // Endpoint untuk mengupdate profil pengguna
-router.put('/', verifyToken, async (req, res) => {
+router.put('/update', verifyToken, async (req, res) => {
   try {
     // Mendapatkan ID pengguna dari middleware verifyToken
     const userId = req.user.uid;
