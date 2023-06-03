@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { verifyToken } = require('../middleware/authentication');
+const { verifyToken } = require('../middleware/verifyToken');
 const db = require('../config');
 
 // Endpoint untuk menambahkan item ke keranjang

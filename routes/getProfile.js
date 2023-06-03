@@ -19,14 +19,19 @@ router.get('/', verifyToken, async (req, res) => {
       return;
     }
 
+    const  profileData = {};
     // Loop melalui setiap dokumen hasil query
     snapshot.forEach((doc) => {
       const userData = doc.data();
-      const { email, username } = userData;
-      const  profileData = { email, username };
-      console.log(profileData);
-      res.status(200).json(profileData);
+      const { email, username, bio, gender, birthDate } = userData;
+      profileData.email = email;
+      profileData.username = username;
+      profileData.bio = bio;
+      profileData.gender = gender;
+      profileData.birthDate = birthDate;      
     });
+    res.status(200).json(profileData);
+
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Sepertinya ada yang salah' });

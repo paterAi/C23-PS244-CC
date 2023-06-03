@@ -12,28 +12,30 @@ router.post('/', async (req, res) => {
     // Tambahkan logika validasi email dan password sesuai kebutuhan
 
     const usersRef = db.collection('users');
-    const querySnapshot = await usersRef.where('email', '==', email).get();
+    const query = usersRef.where('email', '==', email);
+    const snapshot = await query.get();
 
-    if (querySnapshot.empty) {
+    if (snapshot.empty) {
         res.status(404).json({ error: 'Akun tidak ditemukan' });
     } else {
-        const match = await bcrypt.compare(req.body.password, querySnapshot.docs[0].data().password);
+        const match = await bcrypt.compare(req.body.password, snapshot.docs[0].data().password);
         if (!match) {
             res.status(401).json({ error: 'Password yang dimasukkan salah' });
+            return;
         }
-        const username = querySnapshot.docs[0].data().username;
-        const email = querySnapshot.docs[0].data().email;
+        const username = snapshot.docs[0].data().username;
+        const email = snapshot.docs[0].data().email;
 
         const accessSecretKey = process.env.ACCESS_TOKEN_SECRET;
         const refreshSecretKey = process.env.REFRESH_TOKEN_SECRET;
         const accessToken = jwt.sign({ username, email }, accessSecretKey, { 
-            expiresIn: "1d" });
+            expiresIn: "5h" });
         
         const refreshToken = jwt.sign({ username, email }, refreshSecretKey, { 
             expiresIn: "1d" });
         
         // buat update token
-        await usersRef.doc(querySnapshot.docs[0].id).update({
+        await usersRef.doc(snapshot.docs[0].id).update({
             refreshToken: refreshToken
         });
         res.cookie('refreshToken', refreshToken, { 
@@ -41,6 +43,7 @@ router.post('/', async (req, res) => {
           maxAge: 24 * 60 * 60 * 1000,
           //secure: true
         });
+        res.status(200);
         res.json({ accessToken });
     } 
   } catch (error) {

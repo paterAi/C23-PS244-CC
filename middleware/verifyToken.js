@@ -19,22 +19,3 @@ const verifyToken = (req, res, next) => {
 };
 
 module.exports = { verifyToken };
-
-/*
-        // Mendapatkan data pengguna dari Firestore
-        const userRef = admin.firestore().collection('users').doc(decodedToken.uid);
-        userRef.get().then((doc) => {
-            if (!doc.exists) {
-                return res.status(401).json({ error: 'Data Tidak Ada' });
-            }
-
-            // Tambahkan data pengguna ke req.user
-            req.user = doc.data();
-            next();
-        });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Sepertinya ada yang salah' });
-  }
-};
-*/
