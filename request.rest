@@ -1,0 +1,68 @@
+### SIGNUP
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "username": "franganteng123",
+    "email": "fran@gmail.com",
+    "password": "Password12",
+    "confirmPass": "Password12"
+}
+
+### LOGIN
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email":"fran@gmail.com",
+    "password": "Password12"
+}
+
+### GET_PROFILE
+GET http://localhost:3000/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZyYW5nYW50ZW5nMTIzIiwiZW1haWwiOiJmcmFuQGdtYWlsLmNvbSIsImlhdCI6MTY4NTY4MDAzNywiZXhwIjoxNjg1Njk4MDM3fQ.vBcND_yDnv0iFGmZIb9-RA6GzewdgHqfjkY9m9qGrpg
+
+{
+    "email":"salman@gmail.com"
+}
+
+### UPDATE_PROFILE
+PUT http://localhost:3000/profile/update
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbmdhbnRlbmcxMjMiLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODU2Nzk0MzcsImV4cCI6MTY4NTY5NzQzN30.d-SeLxCi6LY6wTP96D4Bo2w8YJX5XUd1KmlTsyk2niE
+
+{
+    "email": "salman@gmail.com",
+    "newEmail": "salmanhehe@gmail.com",
+    "newUsername": "Salman1ganteng",
+    "newBio": "Hidup Indah ya",
+    "newGender": "Male",
+    "newBirthDate": "2001-01-12"
+}
+
+### REFRESH TOKEN
+PUT http://localhost:3000/token
+
+{
+    "email":"salman@gmail.com"
+}
+
+### LOGOUT
+POST http://localhost:3000/logout
+
+### ADD_SAYUR
+POST http://localhost:3000/addSayur
+
+{
+    "judul": "Jual Kacang Polong", 
+    "harga": "3000", 
+    "satuan": "500",
+    "satuanUkuran": "gr",
+    "discount": "10", 
+    "kategori": "Kacang", 
+    "deskripsi": "Kami menjual kacang polong murah gas beli ga sih", 
+    "stok":"524", 
+    "namaToko": "Kacang Sukses ID", 
+    "dikirimDari": "Sukabumi"
+}
