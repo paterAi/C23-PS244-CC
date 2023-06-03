@@ -9,10 +9,10 @@ var logger = require('morgan');
 const signUpUserRoutes = require('./routes/signUpUser');
 const loginUserRoutes = require('./routes/loginUser');
 const { verifyToken } = require('./middleware/verifyToken');
-//const { refreshToken } = require('./routes/refreshToken');
+const { refreshToken } = require('./routes/refreshToken');
 const getProfileRoutes = require('./routes/getProfile');
 const updateProfileRoutes = require('./routes/updateProfile');
-//const logoutUserRoutes = require('./routes/logoutUser');
+const logoutUserRoutes = require('./routes/logoutUser');
 const addSayurRoutes = require('./routes/addSayur');
 //const addCartRoutes = require('./routes/addCart');
 
@@ -34,8 +34,8 @@ app.use('/login', loginUserRoutes);
 app.use('/signup', signUpUserRoutes);
 app.use('/profile', verifyToken, getProfileRoutes);
 app.use('/profile', verifyToken, getProfileRoutes, updateProfileRoutes);
-//app.use('/token', refreshToken);
-//app.use('/logout', logoutUserRoutes);
+app.use('/token', refreshToken);
+app.use('/logout', logoutUserRoutes);
 app.use('/addSayur', addSayurRoutes);
 //app.use('/addCart'), addCartRoutes);
 

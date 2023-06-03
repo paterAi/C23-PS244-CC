@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     try {
         const refreshToken = req.cookies.refreshToken;
         if(!refreshToken) {
-            return res.status(204).json({ error: 'Tidak ada' });
+            res.status(204).json({ error: 'Tidak ada' });
         }
         const usersRef = db.collection('users');
         const query = usersRef.where('refreshToken', '==', refreshToken);
