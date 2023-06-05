@@ -72,5 +72,6 @@ POST http://localhost:3000/addCart
 
 {
     "email": "salman@gmail.com",
-    IDSayur
+    "SayurID" : "TR-00001",
+    "jumlah" : "2"
 }
