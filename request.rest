@@ -14,26 +14,26 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
-    "email":"fran@gmail.com",
+    "email":"salmanhehe@gmail.com",
     "password": "Password12"
 }
 
 ### GET_PROFILE
 GET http://localhost:3000/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZyYW5nYW50ZW5nMTIzIiwiZW1haWwiOiJmcmFuQGdtYWlsLmNvbSIsImlhdCI6MTY4NTY4MDAzNywiZXhwIjoxNjg1Njk4MDM3fQ.vBcND_yDnv0iFGmZIb9-RA6GzewdgHqfjkY9m9qGrpg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbjFnYW50ZW5nIiwiZW1haWwiOiJzYWxtYW5oZWhlQGdtYWlsLmNvbSIsImlhdCI6MTY4NTkzNzUwNCwiZXhwIjoxNjg1OTU1NTA0fQ.O_W-tMMgXY7BjXznrPkKaSpHVzLXZI4bn24HjEmBzls
 
 {
-    "email":"salman@gmail.com"
+    "email":"fran@gmail.com"
 }
 
 ### UPDATE_PROFILE
 PUT http://localhost:3000/profile/update
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbmdhbnRlbmcxMjMiLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODU2Nzk0MzcsImV4cCI6MTY4NTY5NzQzN30.d-SeLxCi6LY6wTP96D4Bo2w8YJX5XUd1KmlTsyk2niE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImZyYW5nYW50ZW5nMTIzIiwiZW1haWwiOiJmcmFuQGdtYWlsLmNvbSIsImlhdCI6MTY4NTkzNzQxMSwiZXhwIjoxNjg1OTU1NDExfQ.U1Mi8D5dTcTjvXN_s6gmzC6irp_Kye-AlorBE6muEEY
 
 {
-    "email": "salman@gmail.com",
+    "email": "fran@gmail.com",
     "newEmail": "salmanhehe@gmail.com",
     "newUsername": "Salman1ganteng",
     "newBio": "Hidup Indah ya",
@@ -65,4 +65,12 @@ POST http://localhost:3000/addSayur
     "stok":"524", 
     "namaToko": "Kacang Sukses ID", 
     "dikirimDari": "Sukabumi"
+}
+
+### ADD_CART
+POST http://localhost:3000/addCart
+
+{
+    "email": "salman@gmail.com",
+    IDSayur
 }

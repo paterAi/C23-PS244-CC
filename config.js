@@ -1,6 +1,6 @@
 var admin = require("firebase-admin");
 
-var serviceAccount = require("./credentials-capstone.json");
+var serviceAccount = require("./credentials.json");
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccount)
@@ -9,9 +9,3 @@ admin.initializeApp({
 const db = admin.firestore();
 
 module.exports = db;
-
-
-
-
-
-

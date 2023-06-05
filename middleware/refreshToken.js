@@ -4,20 +4,20 @@ const db = require('../config');
 const dotenv = require('dotenv').config();
 const router = express.Router();
 
-router.put('/', async (req, res) => {
+const refreshToken = (req, res, next) => {
     try {
         const refreshToken = req.cookies.refreshToken;
         if(!refreshToken) return res.status(401).json({ error: 'Unauthorized: Token tidak ada' });
         
         const usersRef = db.collection('users');
         const query = usersRef.where('refreshToken', '==', refreshToken);
-        const snapshot = await query.get();
+        const snapshot = query.get();
 
         if (snapshot.empty) {
             res.status(403).json({ error: 'Token tidak Valid' });
             return;
         }
-        await usersRef.doc(snapshot.docs[0].id).update({
+        usersRef.doc(snapshot.docs[0].id).update({
             refreshToken: refreshToken
         });
 
@@ -29,6 +29,7 @@ router.put('/', async (req, res) => {
                 expiresIn: '5h' 
             });
             res.json({ accessToken });
+            next();
         });
         
     } catch (error) {
@@ -37,4 +38,4 @@ router.put('/', async (req, res) => {
     }
 });
 
-module.exports = router;
+module.exports = { refreshToken };

@@ -24,6 +24,7 @@ router.get('/', verifyToken, async (req, res) => {
     snapshot.forEach((doc) => {
       const userData = doc.data();
       const { email, username, bio, gender, birthDate } = userData;
+      profileData.id = doc.id;
       profileData.email = email;
       profileData.username = username;
       profileData.bio = bio;
