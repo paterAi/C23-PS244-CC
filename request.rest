@@ -56,13 +56,13 @@ POST http://localhost:3000/addSayur
 
 {
     "judul": "Jual Kacang Polong", 
-    "harga": "3000", 
-    "satuan": "500",
+    "harga": 3000, 
+    "satuan": 500,
     "satuanUkuran": "gr",
-    "discount": "10", 
+    "discount": 10, 
     "kategori": "Kacang", 
     "deskripsi": "Kami menjual kacang polong murah gas beli ga sih", 
-    "stok":"524", 
+    "stok":524, 
     "namaToko": "Kacang Sukses ID", 
     "dikirimDari": "Sukabumi"
 }
