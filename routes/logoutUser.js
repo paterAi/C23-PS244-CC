@@ -7,14 +7,16 @@ router.post('/', async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken
     if (!refreshToken) {
-      res.status(204).json({ error: 'Tidak ada' })
+      res.status(401).json({ error: 'Tidak ada' })
+      return
     }
     const usersRef = db.collection('users')
     const query = usersRef.where('refreshToken', '==', refreshToken)
     const snapshot = await query.get()
 
     if (snapshot.empty) {
-      res.status(204).json({ error: 'Tidak ada' })
+      res.status(401).json({ error: 'Tidak ada' })
+      return
     }
     // eslint-disable-next-line no-unused-vars
     const email = snapshot.docs[0].data().email
@@ -24,6 +26,9 @@ router.post('/', async (req, res) => {
     res.clearCookie('refreshToken')
     res.status(200).json({ message: 'Berhasil Logout' })
   } catch (error) {
-
+    console.error(error)
+    res.sendStatus(500)
   }
 })
+
+module.exports = router

@@ -12,11 +12,11 @@ const loginUserRoutes = require('./routes/loginUser')
 const { verifyToken } = require('./middleware/verifyToken')
 const getProfileRoutes = require('./routes/getProfile')
 const updateProfileRoutes = require('./routes/updateProfile')
-// const addSayurRoutes = require('./routes/addSayur')
-const addCartRoutes = require('./routes/addCart')
+const { refreshToken } = require('./routes/refreshToken')
+const addSayurRoutes = require('./routes/addSayur')
 
-// ga Jadi
-// const { refreshToken } = require('./middleware/refreshToken')
+// Dimatikan
+// const addCartRoutes = require('./routes/addCart')
 // const logoutUserRoutes = require('./routes/logoutUser')
 
 const app = express()
@@ -39,11 +39,12 @@ app.use('/login', loginUserRoutes)
 app.use('/signup', signUpUserRoutes)
 app.use('/profile', verifyToken, getProfileRoutes)
 app.use('/profile', verifyToken, getProfileRoutes, updateProfileRoutes)
-// app.use('/addSayur', addSayurRoutes)
-app.use('/addCart', addCartRoutes)
+app.use('/token', refreshToken)
+app.use('/addSayur', addSayurRoutes)
 
-// app.use('/token', refreshToken)
-// app.use('/logout', logoutUserRoutes)
+// Dimatikan
+// app.use('/addCart', addCartRoutes)
+// app.use('logout', logoutUserRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

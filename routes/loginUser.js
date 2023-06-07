@@ -8,18 +8,18 @@ const db = require('../config')
 router.post('/', async (req, res) => {
   try {
     // eslint-disable-next-line no-unused-vars
-    const { email, password } = req.body
+    const { inputEmail, inputPassword } = req.body
 
     // Tambahkan logika validasi email dan password sesuai kebutuhan
 
     const usersRef = db.collection('users')
-    const query = usersRef.where('email', '==', email)
+    const query = usersRef.where('email', '==', inputEmail)
     const snapshot = await query.get()
 
     if (snapshot.empty) {
       res.status(404).json({ error: 'Akun tidak ditemukan' })
     } else {
-      const match = await bcrypt.compare(req.body.password, snapshot.docs[0].data().password)
+      const match = await bcrypt.compare(req.body.inputPassword, snapshot.docs[0].data().password)
       if (!match) {
         res.status(401).json({ error: 'Password yang dimasukkan salah' })
         return

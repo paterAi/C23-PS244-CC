@@ -18,14 +18,15 @@ router.post('/', async (req, res) => {
     } = req.body
 
     const sayurRef = db.collection('sayur')
-    const docSnapshot = await sayurRef.doc(kategori).get()
+    const docRef = sayurRef.doc(kategori)
+    const docSnapshot = await docRef.get()
 
     if (docSnapshot.exists) {
       res.status(409).json({ error: 'Nama sayur sudah ada' })
     } else {
       const hargaDiscount = harga - (harga * discount / 100)
 
-      await sayurRef.doc(kategori).add({
+      await docRef.set({
         judul,
         harga,
         satuan,

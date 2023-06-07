@@ -2,14 +2,14 @@ const jwt = require('jsonwebtoken')
 const db = require('../config')
 require('dotenv').config()
 
-const refreshToken = (req, res, next) => {
+const refreshToken = async (req, res) => {
   try {
     const refreshToken = req.cookies.refreshToken
     if (!refreshToken) return res.status(401).json({ error: 'Unauthorized: Token tidak ada' })
 
     const usersRef = db.collection('users')
     const query = usersRef.where('refreshToken', '==', refreshToken)
-    const snapshot = query.get()
+    const snapshot = await query.get()
 
     if (snapshot.empty) {
       res.status(403).json({ error: 'Token tidak Valid' })
@@ -27,7 +27,6 @@ const refreshToken = (req, res, next) => {
         expiresIn: '5h'
       })
       res.json({ accessToken })
-      next()
     })
   } catch (error) {
     console.log(error)
