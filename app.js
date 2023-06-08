@@ -5,9 +5,9 @@ const cookieParser = require('cookie-parser')
 const logger = require('morgan')
 const cors = require('cors')
 
-// var indexRouter = require('./routes/index')
+const indexRouter = require('./routes/index')
 // var usersRouter = require('./routes/users')
-const signUpUserRoutes = require('./routes/signUpUser')
+const signupUserRoutes = require('./routes/signupUser')
 const loginUserRoutes = require('./routes/loginUser')
 const { verifyToken } = require('./middleware/verifyToken')
 const getProfileRoutes = require('./routes/getProfile')
@@ -33,10 +33,10 @@ app.use(cookieParser())
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors())
 
-// app.use('/', indexRouter)
+app.use('/', indexRouter)
 // app.use('/users', usersRouter)
 app.use('/login', loginUserRoutes)
-app.use('/signup', signUpUserRoutes)
+app.use('/signup', signupUserRoutes)
 app.use('/profile', verifyToken, getProfileRoutes)
 app.use('/profile', verifyToken, getProfileRoutes, updateProfileRoutes)
 app.use('/token', refreshToken)
@@ -59,7 +59,7 @@ app.use(function (err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500)
-  res.render('error')
+  // res.render('error')
 })
 
 module.exports = app
