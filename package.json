@@ -1,5 +1,6 @@
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
   "dependencies": {
     "dotenv": "^16.1.4",
     "express": "^4.18.2",
@@ -11,6 +12,8 @@
     "deploy": "firebase deploy --only functions"
 
 =======
+=======
+>>>>>>> db92a82a7f3ea1077004a3a6fcf39df2a5718083
   "name": "peterai---backend",
   "version": "0.0.0",
   "private": true,
@@ -25,6 +28,9 @@
     "jade": "^0.29.0",
     "morgan": "~1.9.1",
     "path": "^0.12.7"
+<<<<<<< HEAD
 >>>>>>> 045ecd46c8f7fbdd460151becb070e7c620bf232
+=======
+>>>>>>> db92a82a7f3ea1077004a3a6fcf39df2a5718083
   }
 }
