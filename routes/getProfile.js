@@ -7,11 +7,11 @@ const { verifyToken } = require('../middleware/verifyToken')
 router.get('/', verifyToken, async (req, res) => {
   try {
     // Mendapatkan ID pengguna dari middleware verifyToken
-    const emailId = req.email
+    const email = req.email
 
     // Mengambil data profil pengguna dari Firestore
     const usersRef = db.collection('users')
-    const query = usersRef.where('email', '==', emailId)
+    const query = usersRef.where('email', '==', email)
     const snapshot = await query.get()
 
     if (snapshot.empty) {

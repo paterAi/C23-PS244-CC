@@ -6,12 +6,15 @@ const db = require('../config')
 router.put('/update', verifyToken, async (req, res) => {
   try {
     // eslint-disable-next-line no-unused-vars
-    const { email, newEmail, newUsername, newBio, newGender, newBirthDate } = req.body
+    const { email, newUsername, newBio, newGender, newBirthDate } = req.body
 
-    const emailBody = req.body.email
     const usersRef = db.collection('users')
-    const query = usersRef.where('email', '==', emailBody)
+    const query = usersRef.where('email', '==', email)
     const snapshot = await query.get()
+
+    if (snapshot.empty) {
+      res.status(404).json({ error: 'Akun tidak ditemukan' })
+    }
 
     let profileUpdated = false
     const updatePromises = []
@@ -36,7 +39,6 @@ router.put('/update', verifyToken, async (req, res) => {
       updatePromises.push(
         docRef.update({
           username: newUsername,
-          email: newEmail,
           bio: newBio,
           gender: newGender,
           birthDate: newBirthDate
@@ -47,7 +49,6 @@ router.put('/update', verifyToken, async (req, res) => {
       const updatedData = {
         ...oldData,
         username: newUsername,
-        email: newEmail,
         bio: newBio,
         gender: newGender,
         birthDate: newBirthDate
@@ -62,7 +63,7 @@ router.put('/update', verifyToken, async (req, res) => {
     if (profileUpdated) {
       res.status(200).json({ message: 'Profil berhasil diperbarui' })
     } else {
-      res.status(200).json({ message: 'Tidak ada pembaruan profil yang dilakukan' })
+      res.status(201).json({ message: 'Tidak ada pembaruan profil yang dilakukan' })
     }
   } catch (error) {
     console.error(error)

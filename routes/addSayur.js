@@ -5,38 +5,40 @@ const db = require('../config')
 router.post('/', async (req, res) => {
   try {
     const {
+      idSayur,
       judul,
       harga,
+      ukuran,
       satuan,
-      satuanUkuran,
       discount,
       kategori,
       deskripsi,
-      stok,
-      namaToko,
-      dikirimDari
+      stok
     } = req.body
 
     const sayurRef = db.collection('sayur')
-    const docRef = sayurRef.doc(kategori)
+    const docRef = sayurRef.doc(idSayur)
     const docSnapshot = await docRef.get()
 
+    if (!(kategori === 'Bean' || kategori === 'Bitter Gourd' || kategori === 'Bottle Gourd' || kategori === 'Eggplant' || kategori === 'Broccoli' || kategori === 'Cabbage' || kategori === 'Bell Pepper' || kategori === 'Carrot' || kategori === 'Cauliflower' || kategori === 'Cucumber' || kategori === 'Papaya' || kategori === 'Potato' || kategori === 'Pumpkin' || kategori === 'Radish' || kategori === 'Tomato')) {
+      res.status(400).json({ error: 'Kategori tidak termasuk kategori yang valid' })
+    }
+
     if (docSnapshot.exists) {
-      res.status(409).json({ error: 'Nama sayur sudah ada' })
+      res.status(409).json({ error: 'Sayur sudah ada' })
     } else {
       const hargaDiscount = harga - (harga * discount / 100)
 
       await docRef.set({
+        idSayur,
         judul,
         harga,
+        ukuran,
         satuan,
-        satuanUkuran,
         discount,
         kategori,
         deskripsi,
         stok,
-        namaToko,
-        dikirimDari,
         hargaDiscount
       })
 
