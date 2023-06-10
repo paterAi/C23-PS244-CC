@@ -538,6 +538,53 @@ Add an item to the shopping cart.
       "error": "An error occurred while adding the product to the cart."
     }
     ```
+## D. Search
 
-
-
+- URL: /api/sayur/search
+- Method: GET
+- Query Parameters:
+  - query (string, required) - The search query to find matching sayur.
+- Example Request:
+  ```
+  GET /api/sayur/search?query=broccoli
+  ```
+- Response:
+  - 200 OK
+    ```
+    {
+        "error": false,
+        "message": "Search results for 'broccoli'",
+        "data": [
+            {
+                "idSayur": "TR-000002",
+                "judul": "Broccoli",
+                "harga": 8000,
+                "discount": 0,
+                "hargaDiscount": 8000,
+                "ukuran": "Medium",
+                "satuan": "Biji",
+                "kategori": "Broccoli",
+                "deskripsi": "Fresh and nutritious broccoli.",
+                "stok": 10
+            },
+            {
+                "idSayur": "TR-000006",
+                "judul": "Broccoli Seeds",
+                "harga": 2000,
+                "discount": 0,
+                "hargaDiscount": 2000,
+                "ukuran": "Small",
+                "satuan": "Biji",
+                "kategori": "Broccoli",
+                "deskripsi": "Seeds for growing broccoli at home.",
+                "stok": 50
+            }
+        ]
+    }
+    ```
+- 400 Bad Request
+  - "Invalid search query"
+- 404 Not Found
+  - "No matching sayur found"
+- 500 Internal Server Error
+  -"Error occurred while searching sayur"
