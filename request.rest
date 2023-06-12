@@ -1,5 +1,5 @@
 ### SIGNUP
-POST http://localhost:3000/signup
+POST http://localhost:3000/register
 Content-Type: application/json
 
 {
@@ -14,6 +14,15 @@ POST http://localhost:3000/login
 Content-Type: application/json
 
 {
+    "email":"salman@gmail.com",
+    "password": "Password12"
+}
+
+### REFRESH TOKEN
+POST http://localhost:3000/token
+Content-Type: application/json
+
+{
     "inputEmail":"salman@gmail.com",
     "inputPassword": "Password12"
 }
@@ -21,7 +30,7 @@ Content-Type: application/json
 ### GET_PROFILE
 GET http://localhost:3000/profile
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbG1hbmdhbnRlbmcxMjMiLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODYxMDkyODksImV4cCI6MTY4NjEyNzI4OX0.jfenZPdE-lmNtpZD0AuUAFknZRF-f3G_mAv1TL_YYRQ
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJ1c2VybmFtZSI6InNhbG1hbmdhbnRlbmcxMjMiLCJpYXQiOjE2ODY0MDQ4MDksImV4cCI6MTY4NjQyMjgwOX0.ggTZl2iv5swc3n98fBOhpUmqvwr04msoDPh7qu3yDIQ
 
 {
     "email":"salman@gmail.com"

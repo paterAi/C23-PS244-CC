@@ -24,7 +24,13 @@ router.post('/', async (req, res) => {
         password: hashPassword
         // Tambahkan informasi pengguna lainnya jika diperlukan
       })
-      res.status(200).json({ message: 'Akun berhasil dibuat' })
+      res.status(200).json({
+        error: false,
+        message: 'Akun berhasil dibuat',
+        data: {
+          username
+        }
+      })
     }
   } catch (error) {
     console.error(error)
