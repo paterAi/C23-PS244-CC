@@ -3,13 +3,15 @@
 ## 1. Install Module
 
 ```bash
-npm install express nodemon firebase firebase-admin cookie-parser body-parser jade path dotenv
+npm install express nodemon firebase firebase-admin cookie-parser body-parser jade path dotenv bcrypt cors debug http-errors jsonwebtoken logger morgan multer path regex
 ```
 
 ## 2. Run app
 
 ```bash
 node app.js
+
+## for testing mode: $ npm test
 ```
 
 ===
