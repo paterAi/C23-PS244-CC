@@ -14,11 +14,13 @@ const getProfileRoutes = require('./routes/getProfile')
 const updateProfileRoutes = require('./routes/updateProfile')
 const { refreshToken } = require('./routes/refreshToken')
 const addSayurRoutes = require('./routes/addSayur')
+const getSayurRoutes = require('./routes/getSayur')
+const cariSayurRoutes = require('./routes/search')
+// const addCartRoutes = require('./routes/addCart')
 
 // Dimatikan
-// const addCartRoutes = require('./routes/addCart')
 // const logoutUserRoutes = require('./routes/logoutUser')
-
+const cobaCariRoutes = require('./routes/coba-cari')
 const app = express()
 
 // Router.use();
@@ -37,13 +39,16 @@ app.use('/', indexRouter)
 // app.use('/users', usersRouter)
 app.use('/login', loginUserRoutes)
 app.use('/register', registerUserRoutes)
-app.use('/profile', verifyToken, getProfileRoutes)
-app.use('/profile', verifyToken, getProfileRoutes, updateProfileRoutes)
-app.use('/token', refreshToken)
-app.use('/addSayur', addSayurRoutes)
+app.use('/user/profile', verifyToken, getProfileRoutes)
+app.use('/user/update-profile', verifyToken, getProfileRoutes, updateProfileRoutes)
+app.use('/user/token', refreshToken)
+app.use('/add-sayur', addSayurRoutes)
+app.use('/api/sayur', getSayurRoutes)
+app.use('/api/coba-cari', cobaCariRoutes)
+app.use('/api/sayur', cariSayurRoutes)
+// app.use('/user/add-cart', verifyToken, addCartRoutes)
 
 // Dimatikan
-// app.use('/addCart', addCartRoutes)
 // app.use('logout', logoutUserRoutes)
 
 // catch 404 and forward to error handler

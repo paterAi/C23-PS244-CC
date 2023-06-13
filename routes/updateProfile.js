@@ -3,37 +3,42 @@ const router = express.Router()
 const { verifyToken } = require('../middleware/verifyToken')
 const db = require('../config')
 
-router.put('/update', verifyToken, async (req, res) => {
+router.put('/', verifyToken, async (req, res) => {
   try {
-    // eslint-disable-next-line no-unused-vars
-    const { email, newUsername, newBio, newGender, newBirthDate } = req.body
+    const email = req.email
+    const { newUsername, newBio, newGender, newBirthDate } = req.body
 
     const usersRef = db.collection('users')
     const query = usersRef.where('email', '==', email)
     const snapshot = await query.get()
 
     if (snapshot.empty) {
-      res.status(404).json({ error: 'Akun tidak ditemukan' })
+      res.status(404).json({ error: 'Akun tidak ada' })
+      return
     }
 
     let profileUpdated = false
     const updatePromises = []
 
-    snapshot.forEach(async (doc) => {
+    snapshot.forEach((doc) => {
       const docRef = db.collection('users').doc(doc.id)
-
-      // Mendapatkan nilai sebelum pembaruan
       const oldData = doc.data()
 
+      const updateData = {}
+
       if (!oldData.gender) {
-        updatePromises.push(docRef.update({ gender: newGender }))
+        updateData.gender = newGender
         profileUpdated = true
       } else if (!oldData.birthDate) {
-        updatePromises.push(docRef.update({ birthDate: newBirthDate }))
+        updateData.birthDate = newBirthDate
         profileUpdated = true
       } else if (!oldData.bio) {
-        updatePromises.push(docRef.update({ bio: newBio }))
+        updateData.bio = newBio
         profileUpdated = true
+      }
+
+      if (Object.keys(updateData).length > 0) {
+        updatePromises.push(docRef.update(updateData))
       }
 
       updatePromises.push(
@@ -44,30 +49,44 @@ router.put('/update', verifyToken, async (req, res) => {
           birthDate: newBirthDate
         })
       )
-
-      // Mendapatkan nilai setelah pembaruan
-      const updatedData = {
-        ...oldData,
-        username: newUsername,
-        bio: newBio,
-        gender: newGender,
-        birthDate: newBirthDate
-      }
-
-      console.log('Data Sebelum Pembaruan:', oldData)
-      console.log('Data Setelah Pembaruan:', updatedData)
     })
 
     await Promise.all(updatePromises)
 
-    if (profileUpdated) {
-      res.status(200).json({ message: 'Profil berhasil diperbarui' })
+    console.log(profileUpdated)
+
+    if (profileUpdated === true) {
+      res.status(201).json({
+        error: false,
+        message: 'Profile tidak berubah',
+        data: {
+          id: snapshot.docs[0].id,
+          email,
+          username: newUsername,
+          bio: newBio,
+          gender: newGender,
+          birthDate: newBirthDate
+        }
+      })
     } else {
-      res.status(201).json({ message: 'Tidak ada pembaruan profil yang dilakukan' })
+      res.status(200).json({
+        error: false,
+        message: 'Profile berhasil diubah',
+        data: {
+          id: snapshot.docs[0].id,
+          email,
+          username: newUsername,
+          bio: newBio,
+          gender: newGender,
+          birthDate: newBirthDate
+        }
+      })
     }
   } catch (error) {
     console.error(error)
-    res.status(500).json({ error: 'Terjadi kesalahan saat memperbarui profil pengguna' })
+    res
+      .status(500)
+      .json({ error: 'Ada yang salah saat update profile' })
   }
 })
 
