@@ -34,6 +34,6 @@ Higher data access rates: Servers that are closer to users also tend to have fas
 
 Cost savings: Some cloud service providers charge based on the server location used. By choosing a server that is close by, you may be able to reduce data transfer costs or high network access costs
 
-5. After the deploy is complete, we will get the endpoint url, then do a test on postman, after that we will integrate the fire with the mobile application
+5. After the deploy is complete, we will get the endpoint url, then do a test on postman, after that we will integrate the API with the mobile application
 
 6. Enter vegetable image data with a png extension to firebase storage
