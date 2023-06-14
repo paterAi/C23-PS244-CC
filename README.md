@@ -328,3 +328,37 @@ Add an item to the shopping cart.
 - 500 Internal Server Error
   -"Ada yang salah saat mencari sayur"
 
+{
+  chart {
+    list_product {
+      id pesanan: 0 {
+        count: 1,
+        id: diambil dari id sayur pada collection vegetables,
+        name: diambil dari name sayur pada collection vegetables
+        photo_url: diambil dari photo_url sayur pada collection vegetables
+        price: diambil dari price sayur pada collection vegetables
+        total_price: dcoun * price
+        weight: diambil dari weight sayur pada collection vegetables
+      }
+      id pesanan: 1 {
+        count: 1,
+        id: diambil dari id sayur pada collection vegetables,
+        name: diambil dari name sayur pada collection vegetables
+        photo_url: diambil dari photo_url sayur pada collection vegetables
+        price: diambil dari price sayur pada collection vegetables
+        total_price: dcoun * price
+        weight: diambil dari weight sayur pada collection vegetables
+      }
+      total_price: total harga dari seluruh id pesanan
+    }
+    uid: diambil dari doc.uid user
+  }
+}
+
+{
+  id: id sayur diambil dari id document
+  name: nama sayur
+  photo_url: link dari storage untuk gambar sayur
+  price: harga sayur
+  weight: berat sayur
+}

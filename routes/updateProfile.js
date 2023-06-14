@@ -56,7 +56,7 @@ router.put('/', verifyToken, async (req, res) => {
     console.log(profileUpdated)
 
     if (profileUpdated === true) {
-      res.status(201).json({
+      res.status(200).json({
         error: false,
         message: 'Profile tidak berubah',
         data: {

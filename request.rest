@@ -1,0 +1,100 @@
+### SIGNUP
+POST http://localhost:3000/register
+Content-Type: application/json
+
+{
+    "username": "salmanganteng123",
+    "email": "salman@gmail.com",
+    "password": "Password12",
+    "confirmPass": "Password12"
+}
+
+### LOGIN
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "email":"salman@gmail.com",
+    "password": "Password123"
+}
+
+### REFRESH TOKEN
+POST https://asia-southeast2-capstone-projek.cloudfunctions.net/api/token
+Content-Type: application/json
+
+{
+    "inputEmail":"salman@gmail.com",
+    "inputPassword": "Password12"
+}
+
+### GET_PROFILE
+GET http://localhost:3000/profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InNhbG1hbmdhbnRlbmciLCJlbWFpbCI6InNhbG1hbkBnbWFpbC5jb20iLCJpYXQiOjE2ODY3NDgyMTQsImV4cCI6MTY4Njc0ODI3NH0.kKKuvln-K3k6_a9KCGh6pfM0nfQ-KHvfp9i-stUJETM
+
+{
+    "email":"salman@gmail.com"
+}
+
+### UPDATE_PROFILE
+PUT http://localhost:3000/user/update-profile
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbjFnYW50ZW5nIiwiZW1haWwiOiJzYWxtYW5AZ21haWwuY29tIiwiaWF0IjoxNjg2NjM1MjE5LCJleHAiOjE2ODY2MzUyNzl9.lM9MblMctyWgqQ8J0_nlqI5uNDrADVeShrX8xK0kDRc
+
+{
+    "newUsername": "Salman1ganteng",
+    "newBio": "Hidup indah ya kan",
+    "newGender": "Male",
+    "newBirthDate": "2001-01-11"
+}
+
+### REFRESH TOKEN
+PUT http://localhost:3000/token
+Content-Type: application/json
+
+{
+    "email":"salmanups@gmail.com"
+}
+
+### LOGOUT
+POST http://localhost:3000/logout
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbjFnYW50ZW5neWV5ZSIsImVtYWlsIjoic2FsbWFuQGdtYWlsLmNvbSIsImlhdCI6MTY4NjU3MDMzOCwiZXhwIjoxNjg2NTg4MzM4fQ.cWSWI-nAgTJQIC9VTDAg7RQuSn8eO1B6L-KdOY9PYYI
+
+### ADD_SAYUR
+POST http://localhost:3000/api/add-sayur
+Content-Type: application/json
+
+{
+    "idSayur": "KC-000004",
+    "judul": "Jual Kacang polong", 
+    "harga": 5000,
+    "ukuran": 250, 
+    "satuan": "gram",
+    "discount": 10, 
+    "kategori": "Cucumber", 
+    "deskripsi": "Kami menjual kacang polong murah gas beli ga sih", 
+    "stok":524
+}
+
+### LIHAT_SAYUR
+GET http://localhost:3000/api/sayur?idSayur=KC-000001
+Content-Type: application/json
+
+### ADD_CART
+POST http://localhost:3000/cart/add-cart
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlNhbG1hbjFnYW50ZW5neWV5ZSIsImVtYWlsIjoic2FsbWFuQGdtYWlsLmNvbSIsImlhdCI6MTY4NjU3Mzc2OCwiZXhwIjoxNjg2NTkxNzY4fQ.mt5BOaM3q99q2mh_KMpTJ1oQQbbAs_HDvgDCeidTlis
+
+{
+"idSayur": "TR-000001",
+"banyaknya": 2
+}
+
+### CARI_SAYUR
+GET http://localhost:3000/api/sayur/search?katakunci=Cucumber
+Content-Type: application/json
+
+### COBA_CARI
+GET http://localhost:3000/api/coba-cari?kategori=Cucumber
+Content-Type: application/json

@@ -18,12 +18,17 @@ router.post('/', async (req, res) => {
     if (!querySnapshot.empty) {
       res.status(409).json({ error: 'Email sudah digunakan' })
     } else {
-      await usersRef.add({
+      const userDocRef = usersRef.doc() // Membuat referensi dokumen baru dengan ID acak
+      const UserId = userDocRef.id
+
+      await userDocRef.set({
+        id: UserId,
         username,
         email,
         password: hashPassword
         // Tambahkan informasi pengguna lainnya jika diperlukan
       })
+
       res.status(200).json({
         error: false,
         message: 'Akun berhasil dibuat',

@@ -5,18 +5,15 @@ const db = require('../config')
 router.post('/', async (req, res) => {
   try {
     const {
-      idSayur,
-      judul,
-      harga,
-      ukuran,
-      satuan,
+      name,
+      photoUrl,
+      price,
       discount,
-      kategori,
-      deskripsi,
-      stok
+      weight,
+      stock
     } = req.body
 
-    const validCategories = [
+    const validName = [
       'Kacang',
       'Pare',
       'Labu Botol',
@@ -34,30 +31,30 @@ router.post('/', async (req, res) => {
       'Tomat'
     ]
 
-    if (!validCategories.includes(kategori)) {
+    if (!validName.includes(name)) {
       res.status(400).json({ error: 'Kategori tidak valid' })
       return
     }
 
     const sayurRef = db.collection('sayur')
-    const docRef = sayurRef.doc(idSayur)
-    const docSnapshot = await docRef.get()
+    const querySnapshot = await sayurRef.where('name', '==', name).get()
 
-    if (docSnapshot.exists) {
-      res.status(409).json({ error: 'Sayur dengan ID tersebut sudah ada' })
+    if (!querySnapshot.empty) {
+      res.status(409).json({ error: 'Sayur sudah ada' })
     } else {
-      const hargaDiscount = harga - (harga * discount / 100)
+      const hargaDiscount = price - (price * discount / 100)
 
-      await docRef.set({
-        idSayur,
-        judul,
-        harga,
-        ukuran,
-        satuan,
+      const sayurDocRef = sayurRef.doc() // Membuat referensi dokumen baru dengan ID acak
+      const SayurId = sayurDocRef.id
+
+      await sayurRef.doc(SayurId).set({
+        id: SayurId,
+        name,
+        photoUrl,
+        price,
         discount,
-        kategori,
-        deskripsi,
-        stok,
+        weight,
+        stock,
         hargaDiscount
       })
 
@@ -65,24 +62,20 @@ router.post('/', async (req, res) => {
         error: false,
         message: 'Sayur Berhasil ditambahkan',
         data: {
-          idSayur,
-          judul,
-          harga,
-          ukuran,
-          satuan,
+          id: SayurId,
+          name,
+          photoUrl,
+          price,
           discount,
-          kategori,
-          deskripsi,
-          stok,
+          weight,
+          stock,
           hargaDiscount
         }
       })
     }
   } catch (error) {
     console.error(error)
-    res
-      .status(500)
-      .json({ error: 'Ada yang salah saat menambah sayur' })
+    res.status(500).json({ error: 'Ada yang salah saat menambah sayur' })
   }
 })
 
