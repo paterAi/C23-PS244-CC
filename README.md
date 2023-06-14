@@ -17,7 +17,7 @@ node app.js
 
 >>>>>>> db92a82a7f3ea1077004a3a6fcf39df2a5718083
 
-# Tasks performed
+# Tasks Performed
 1. Consider and choose the appropriate Google service, such as choosing between Google Cloud SQL or Firestore Firebase NoSQL as the database. Prefer Firebase Firestore because it is more economical in terms of cost. Next, configure the billing account so that the credit provided by the Bangkit team is sufficient until the completion of the capstone project.
 
 2. As an admin, monitoring the use of Firebase services and granting access rights to my team. Each learning path is granted editor access so they can access and use Firebase services.
