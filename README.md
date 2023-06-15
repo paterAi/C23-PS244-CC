@@ -38,7 +38,7 @@ Cost savings: Some cloud service providers charge based on the server location u
 
 6. Enter vegetable image data with a png extension to firebase storage
 
-7. implement Firebase Functions on the Express.js API! Following are the API features that have been used and successfully deployed
+7. implement Firebase Functions on the Express.js API Update! Following are the API features that have been used and successfully deployed
 
 ➡ Search (Search): Function to search data.
 ➡ User (User): Function to get user information.
