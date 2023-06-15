@@ -37,3 +37,17 @@ Cost savings: Some cloud service providers charge based on the server location u
 5. After the deployment is complete, we will get an endpoint url that can be accessed or checked on the firebase functions and google cloud functions pages, then do a test on postman, after that we will integrate the API with the mobile application
 
 6. Enter vegetable image data with a png extension to firebase storage
+
+7. implement Firebase Functions on the Express.js API! Following are the API features that have been used and successfully deployed
+
+1. Search (Search): Function to search data.
+2. User (User): Function to get user information.
+3. User Registration (Register User): Function to register a new user.
+4. Login User (Login User): Function for the process of user login.
+5. Add Vegetables (Add Vegetables): Function to add vegetable data.
+6. Get All Vegetables (Get All Vegetables): Function to get all vegetable data.
+7. Get Vegetables (Get Vegetables): Function to get vegetable data based on ID or certain criteria.
+8. Get Profile: Function to get user profile.
+9. Updating Profile (Update Profile): Function to update the user profile.
+
+After a successful deploy, you can inspect endpoints in Google Cloud Functions and Firebase Functions
