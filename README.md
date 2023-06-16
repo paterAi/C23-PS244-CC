@@ -47,7 +47,9 @@ Cost savings: Some cloud service providers charge based on the server location u
 ➡ Add Vegetables (Add Vegetables): Function to add vegetable data.
 ➡ Get All Vegetables (Get All Vegetables): Function to get all vegetable data.
 ➡ Get Vegetables (Get Vegetables): Function to get vegetable data based on ID or certain criteria.
+➡ The "Get All Vegetables" API feature is a feature used in applications or systems related to information or data about various types of vegetables.
 ➡ Get Profile: Function to get user profile.
 ➡ Updating Profile (Update Profile): Function to update the user profile.
+➡ Logout User : The user logout feature is used to give users control over the security and privacy of their account
 
 After a successful deploy, you can inspect endpoints in Google Cloud Functions and Firebase Functions
