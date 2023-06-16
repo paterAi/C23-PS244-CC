@@ -20,7 +20,7 @@ const cariSayurRoutes = require('./routes/search')
 // const createUSerRoutes = require('./routes/createUser')
 // const { createUser } = require('./routes/createUser')
 // Dimatikan
-// const logoutUserRoutes = require('./routes/logoutUser')
+const logoutUserRoutes = require('./routes/logoutUser')
 const cobaCariRoutes = require('./routes/coba-cari')
 const app = express()
 
@@ -51,7 +51,7 @@ app.use('/api/sayur', cariSayurRoutes)
 // app.use('/user/add-cart', verifyToken, addCartRoutes)
 
 // Dimatikan
-// app.use('logout', logoutUserRoutes)
+app.use('/logout', logoutUserRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
